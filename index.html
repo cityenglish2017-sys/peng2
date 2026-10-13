@@ -1,24 +1,143 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><title>펭귄마트 2</title><style>
-:root{font-family:system-ui,'Apple SD Gothic Neo',sans-serif;color:#17334a;background:#b9eaff}*{box-sizing:border-box}body{margin:0}button{font:inherit;cursor:pointer;touch-action:manipulation}#app{max-width:1100px;margin:auto;padding:12px 12px 80px}.top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}.logo{font-size:clamp(25px,4vw,40px);font-weight:1000}.stats{font-size:clamp(17px,2.4vw,25px);font-weight:900;background:white;border-radius:20px;padding:10px 18px}.stage{background:linear-gradient(#f5fcff,#d8f6ff);border:5px solid #fff;border-radius:28px;margin-top:12px;padding:14px;box-shadow:0 8px 0 #82c8e8}.customer{display:flex;align-items:center;gap:14px}.avatar{font-size:clamp(55px,10vw,100px);background:#fff;border-radius:25px;padding:8px;min-width:100px;text-align:center}.speech{background:white;border-radius:22px;padding:15px;flex:1;min-width:0}.who{font-size:clamp(20px,3vw,30px);font-weight:1000;color:#1577b8}.request{font-size:clamp(21px,3.1vw,32px);font-weight:900;line-height:1.4}.orderIcons{font-size:clamp(32px,5vw,53px);margin-top:5px}.controls{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.btn{border:0;border-radius:18px;padding:12px 18px;background:#fff;font-size:clamp(18px,2.5vw,25px);font-weight:900;box-shadow:0 5px 0 #a5d2e6}.btn:active,.item:active{transform:translateY(3px);box-shadow:0 2px 0 #94bbd2}.primary{background:#ffda57}.success{background:#6de0ac}.danger{background:#ffc3ba}.machine{background:#338ac4;border:7px solid #2369a0;border-radius:28px;padding:13px;box-shadow:inset 0 6px #64b8e7}.machineTitle{text-align:center;color:white;font-weight:1000;font-size:clamp(22px,3vw,34px);margin-bottom:10px}.shelves{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.item{border:3px solid #d9f5ff;border-radius:17px;background:#fff;min-height:105px;padding:6px 2px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;box-shadow:0 5px 0 #1c6191;position:relative}.item .emoji{font-size:clamp(33px,5.5vw,58px)}.item .name{font-size:clamp(14px,2vw,22px);font-weight:900;line-height:1.2}.item .price{font-size:clamp(13px,1.7vw,18px);font-weight:800;color:#40708d}.item.out{filter:grayscale(1);opacity:.55}.item.out:after{content:'품절';position:absolute;top:8px;right:3px;background:#ed5d67;color:white;font-weight:900;border-radius:9px;padding:3px}.tray{margin-top:12px;background:#fff4d0;border:4px dashed #ffc653;border-radius:22px;padding:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}.tray strong{font-size:clamp(19px,2.5vw,26px)}.selected{font-size:clamp(27px,4vw,42px);flex:1;min-width:130px}.message{font-size:clamp(18px,2.6vw,27px);font-weight:900;min-height:34px;margin-top:12px}.mission{background:#ffefae;border:4px solid #ffc552;border-radius:22px;padding:14px;margin:12px 0;font-size:clamp(19px,2.7vw,28px);font-weight:900}.hidden{display:none}.modal{position:fixed;inset:0;background:#13384ebd;display:grid;place-items:center;padding:18px;z-index:10}.modal.hidden{display:none}.panel{width:min(620px,100%);background:white;border-radius:30px;padding:24px;text-align:center;max-height:90dvh;overflow:auto}.panel h1{font-size:clamp(30px,5vw,46px);margin:6px}.panel p{font-size:clamp(20px,3vw,27px);line-height:1.45;font-weight:800}.panel .btn{margin:6px}.footer{text-align:center;font-size:15px;margin:14px;color:#34647f}@media(max-width:540px){#app{padding:8px 8px 50px}.stage{padding:9px}.avatar{min-width:72px;font-size:54px}.speech{padding:10px}.shelves{gap:6px}.item{min-height:93px}.machine{padding:7px;border-width:5px}.item .emoji{font-size:34px}.item .name{font-size:14px}.item .price{font-size:12px}.btn{padding:11px 13px}.customer{gap:8px}}@media(orientation:landscape) and (max-height:650px){.stage{margin-top:6px}.avatar{font-size:50px;min-width:70px}.item{min-height:86px}.item .emoji{font-size:32px}.machineTitle{font-size:22px}.controls{margin:7px 0}}
-</style></head><body><div id="app"><div class="top"><div class="logo">🐧 펭귄마트 2 🚂</div><div class="stats">⭐ <span id="stars">0</span>　🪙 <span id="coins">0</span>　🎁 <span id="round">1</span></div></div><section class="stage"><div class="customer"><div class="avatar" id="avatar">🐧</div><div class="speech"><div class="who" id="who">어서 오세요!</div><div class="request" id="request">손님의 주문을 완성해 주세요!</div><div class="orderIcons" id="orderIcons"></div></div></div><div id="mission" class="mission hidden"></div><div class="controls"><button class="btn" id="repeat">🔊 주문 듣기</button><button class="btn" id="hint">💡 힌트</button><button class="btn" id="refresh">🔄 상품 바꾸기</button><button class="btn" id="mode">🎮 아준 도전</button></div><div class="machine"><div class="machineTitle">🐧 아준이의 만능 자판기 🐧</div><div class="shelves" id="shelves"></div></div><div class="tray"><strong>🛒 장바구니</strong><div class="selected" id="selected">물건을 골라 주세요!</div><button class="btn danger" id="clear">↩️ 비우기</button><button class="btn success" id="sell">🎁 판매!</button></div><div class="message" id="message" aria-live="polite"></div></section><div class="footer">가족 손님 · 자동차 · 기차 · 깜짝 미션 | 터치로 플레이</div></div><div class="modal" id="modal"><div class="panel"><div style="font-size:75px">🐧🚂🚗</div><h1>펭귄마트 2</h1><p>가족들의 주문을 듣고 자판기에서 물건을 골라요!<br>아준 도전은 두세 가지를 조합하고 깜짝 미션도 해결해요.</p><button class="btn primary" id="startEasy">🐣 이서 쉬움</button><button class="btn success" id="startHard">🚀 아준 도전</button></div></div><script>
-(()=>{'use strict';
-const $=id=>document.getElementById(id);
-const family=[['아준이','👦'],['이서','👧'],['엄마','👩'],['아빠','👨'],['진주할머니','👵'],['진주할아버지','👴'],['마산할머니','👵🏻'],['마산할아버지','👴🏻'],['삼촌','🧑'],['이모','👩🏻'],['숙모','👩🏼'],['시환이','👦🏻'],['예나','👧🏻'],['펭귄 손님','🐧']];
-const catalog=[['딸기 아이스크림','🍓',2,'food'],['바닐라 아이스크림','🍦',2,'food'],['초코 아이스크림','🍨',3,'food'],['사과','🍎',2,'food'],['바나나','🍌',2,'food'],['수박','🍉',3,'food'],['딸기','🍓',2,'food'],['포도','🍇',2,'food'],['우유','🥛',2,'drink'],['주스','🧃',2,'drink'],['물','💧',1,'drink'],['레모네이드','🍋',3,'drink'],['도넛','🍩',2,'food'],['쿠키','🍪',2,'food'],['케이크','🍰',4,'food'],['팝콘','🍿',2,'food'],['초콜릿','🍫',2,'food'],['젤리','🍬',2,'food'],['토미카 경찰차','🚓',5,'toy'],['토미카 소방차','🚒',5,'toy'],['토미카 구급차','🚑',5,'toy'],['토미카 버스','🚌',5,'toy'],['토미카 택시','🚕',5,'toy'],['토미카 스포츠카','🏎️',6,'toy'],['토미카 트럭','🚚',5,'toy'],['KTX 산천','🚄',7,'train'],['KTX 청룡','🚅',8,'train'],['SRT','🚆',7,'train'],['무궁화호','🚃',6,'train'],['ITX 청춘','🚈',6,'train'],['새마을호','🚉',6,'train'],['선물 상자','🎁',2,'extra'],['리본','🎀',1,'extra'],['승차권','🎫',2,'extra'],['쇼핑백','🛍️',1,'extra']].map((a,i)=>({id:i,name:a[0],emoji:a[1],price:a[2],type:a[3]}));
-let mode='hard',stars=0,coins=0,round=0,stock=[],basket=[],order=[],customer=null,mission=null,locked=false,lastPerson=-1,trainGap=0;
-const rand=n=>Math.floor(Math.random()*n),pick=a=>a[rand(a.length)],shuffle=a=>[...a].sort(()=>Math.random()-.5);
-function speak(t){if(!('speechSynthesis'in window))return; speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.lang='ko-KR';u.rate=.85;speechSynthesis.speak(u)}
-function setMessage(t){$('message').textContent=t}
-function update(){ $('stars').textContent=stars;$('coins').textContent=coins;$('round').textContent=round;$('mode').textContent=mode==='hard'?'🚀 아준 도전':'🐣 이서 쉬움';$('selected').textContent=basket.length?basket.map(x=>x.emoji).join(' '):'물건을 골라 주세요!'; }
-function render(){const shelf=$('shelves');shelf.replaceChildren();stock.forEach(item=>{const b=document.createElement('button');b.className='item'+(item.out?' out':'');b.disabled=locked;b.innerHTML=`<span class="emoji">${item.emoji}</span><span class="name">${item.name}</span><span class="price">🪙 ${item.price}</span>`;b.addEventListener('click',()=>choose(item));shelf.appendChild(b)});update()}
-function buildStock(){let pool=shuffle(catalog.filter(x=>x.type!=='extra'));let featured=shuffle(catalog.filter(x=>x.type==='train'));let count=12;let selected=pool.slice(0,count);if(mode==='hard'&&(trainGap>=2||Math.random()<.35)){selected[rand(count)]=featured[0];trainGap=0}else trainGap++;stock=selected.map(x=>({...x,out:false}));}
-function ensureStock(item){if(!stock.some(x=>x.id===item.id)){stock[rand(stock.length)]={...item,out:false}}}
-function newOrder(){locked=false;round++;basket=[];let ci=rand(family.length);if(ci===lastPerson)ci=(ci+1)%family.length;lastPerson=ci;customer=family[ci];$('avatar').textContent=customer[1];$('who').textContent=customer[0]+' 손님';buildStock();let usable=stock.filter(x=>x.type!=='extra');let first=pick(usable);order=[first];if(mode==='hard'){let n=round<3?2:(Math.random()<.5?2:3);while(order.length<n){let candidates=usable.filter(x=>!order.some(y=>y.id===x.id));if(!candidates.length)break;order.push(pick(candidates))}if(Math.random()<.3){let extra=pick(catalog.filter(x=>x.type==='extra'));ensureStock(extra);order[order.length-1]=extra}}
-mission=null;if(mode==='hard'&&round>1){let m=rand(6);if(m===0){mission={type:'out',text:'⚠️ 품절 사건! 먼저 재고 보충 버튼을 눌러 주세요.'};let target=stock.find(x=>x.id===order[0].id);target.out=true}else if(m===1){mission={type:'repair',text:'🔧 자판기 고장! 수리 버튼을 눌러야 판매할 수 있어요.'}}else if(m===2){mission={type:'sort',text:'📦 택배 도착! 재고 정리 버튼을 눌러 주세요.'}}else if(m===3){mission={type:'bonus',text:'🎉 오늘은 깜짝 할인! 주문을 정확히 완성하면 보너스 3코인!'}}else if(m===4){mission={type:'gift',text:'🎁 선물 주문! 리본을 함께 담아 주세요.'};let extra=catalog.find(x=>x.name==='리본');ensureStock(extra);if(!order.some(x=>x.id===extra.id))order.push(extra)}else{mission={type:'train',text:'🚂 특별 기차 배송! 기차를 함께 담아 주세요.'};let train=pick(catalog.filter(x=>x.type==='train'));ensureStock(train);if(!order.some(x=>x.id===train.id))order.push(train)}}}
-$('mission').classList.toggle('hidden',!mission);$('mission').textContent=mission?mission.text:'';if(mission&&['out','repair','sort'].includes(mission.type)){let b=document.createElement('button');b.className='btn primary';b.textContent=mission.type==='out'?'📦 재고 보충':mission.type==='repair'?'🛠️ 자판기 수리':'🗂️ 재고 정리';b.onclick=()=>{if(mission.type==='out')stock.forEach(x=>x.out=false);setMessage('미션 해결! 이제 주문을 받아요! ⭐');stars++;mission=null;$('mission').classList.add('hidden');render()};$('mission').appendChild(b)}
-$('request').textContent=mode==='hard'?'다음 물건을 모두 골라 주세요!':'이 물건을 찾아 주세요!';$('orderIcons').textContent=order.map(x=>x.emoji).join(' + ');setMessage('👋 어서 오세요! 주문을 완성해 주세요.');render();speak(customer[0]+' 손님! '+order.map(x=>x.name).join('하고 ')+' 주세요!')}
-function choose(item){if(locked)return;if(item.out){setMessage('⚠️ 품절이에요! 재고를 보충해야 해요.');return}if(mission&&['out','repair','sort'].includes(mission.type)){setMessage('먼저 노란색 미션 버튼을 눌러 주세요!');return}if(basket.length>=5){setMessage('장바구니가 가득 찼어요!');return}basket.push(item);update();setMessage(item.emoji+' '+item.name+' 담았어요!')}
-function sell(){if(locked)return;if(mission&&['out','repair','sort'].includes(mission.type)){setMessage('먼저 돌발 미션을 해결해 주세요!');return}const a=order.map(x=>x.id).sort((x,y)=>x-y),b=basket.map(x=>x.id).sort((x,y)=>x-y);if(a.length===b.length&&a.every((x,i)=>x===b[i])){locked=true;let bonus=mission&&mission.type==='bonus'?3:0;let earned=order.reduce((s,x)=>s+x.price,0)+bonus;coins+=earned;stars+=2;render();setMessage('🎊 주문 성공! +'+earned+' 코인, +2 별!');speak('정답! 정말 잘했어요!');setTimeout(()=>{if(locked)newOrder()},1900)}else{stars=Math.max(0,stars-1);update();setMessage('🤔 주문과 달라요! 다시 확인해 볼까요?');speak('아쉬워요. 주문을 다시 확인해 보세요!')}}
-function start(m){mode=m;stars=0;coins=0;round=0;trainGap=2;$('modal').classList.add('hidden');newOrder()}
-$('startEasy').onclick=()=>start('easy');$('startHard').onclick=()=>start('hard');$('sell').onclick=sell;$('clear').onclick=()=>{basket=[];update();setMessage('장바구니를 비웠어요.')};$('repeat').onclick=()=>speak(customer?customer[0]+' 손님이 '+order.map(x=>x.name).join(' 그리고 ')+' 주문했어요.':'환영합니다');$('hint').onclick=()=>{setMessage('💡 찾아볼 물건: '+order.map(x=>x.name).join(' + '));speak(order.map(x=>x.name).join(' 그리고 '))};$('refresh').onclick=()=>{if(!customer)return;basket=[];let needed=[...order];buildStock();needed.forEach(ensureStock);if(mission&&mission.type==='out'){let x=stock.find(x=>x.id===order[0].id);if(x)x.out=true}render();setMessage('🔄 상품 진열이 바뀌었어요! 주문 물건은 그대로 있어요.')};$('mode').onclick=()=>start(mode==='hard'?'easy':'hard');update();
-})();</script></body></html>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#74d9f6">
+  <title>펭귄마트 2 - 아준이의 만능 자판기</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main id="app">
+
+    <!-- 시작 화면 -->
+    <section id="startScreen" class="screen start-screen">
+      <div class="start-art">
+        <div class="penguin-big">🐧</div>
+        <div class="floating-items">🚗 🍦 🚄 🎁</div>
+      </div>
+
+      <h1>펭귄마트 2</h1>
+      <p class="subtitle">아준이의 만능 자판기</p>
+      <p class="intro">
+        가족 손님들의 주문을 받고<br>
+        맛있는 음식과 장난감을 판매해요!
+      </p>
+
+      <div class="start-buttons">
+        <button id="easyBtn" class="mode-btn easy">
+          <span class="mode-icon">🌸</span>
+          <span>이서 쉬움</span>
+          <small>물건 하나씩 판매하기</small>
+        </button>
+
+        <button id="hardBtn" class="mode-btn hard">
+          <span class="mode-icon">🚄</span>
+          <span>아준 도전</span>
+          <small>조합 주문과 돌발 미션!</small>
+        </button>
+      </div>
+    </section>
+
+    <!-- 게임 화면 -->
+    <section id="gameScreen" class="screen hidden">
+
+      <header class="game-header">
+        <div class="brand">🐧 펭귄마트</div>
+        <div class="score-area">
+          <span id="levelText">⭐ 1단계</span>
+          <span id="coinText">🪙 0</span>
+          <span id="successText">🎁 0</span>
+        </div>
+        <button id="homeBtn" class="small-btn">🏠</button>
+      </header>
+
+      <div class="game-layout">
+
+        <!-- 손님과 주문 -->
+        <section class="customer-panel">
+          <div class="customer-scene">
+            <div id="customerAvatar" class="customer-avatar">👦</div>
+            <div class="penguin-clerk">🐧</div>
+          </div>
+
+          <div class="customer-name" id="customerName">아준이</div>
+
+          <div class="order-box">
+            <div class="order-title">📢 손님의 주문</div>
+            <div id="orderMessage" class="order-message">
+              주문을 준비하고 있어요!
+            </div>
+            <div id="orderIcons" class="order-icons"></div>
+          </div>
+
+          <div id="eventBox" class="event-box hidden">
+            <div id="eventTitle" class="event-title"></div>
+            <div id="eventMessage"></div>
+            <div id="eventChoices" class="event-choices"></div>
+          </div>
+
+          <div class="customer-actions">
+            <button id="repeatBtn" class="action-btn repeat">
+              🔊 다시 듣기
+            </button>
+            <button id="nextBtn" class="action-btn next hidden">
+              ➡️ 다음 손님
+            </button>
+          </div>
+        </section>
+
+        <!-- 자판기 -->
+        <section class="machine-panel">
+          <div class="machine-top">
+            <span>🐧 PENGUIN MART</span>
+            <span id="machineStatus">🟢 영업 중</span>
+          </div>
+
+          <div class="machine-display">
+            <div class="display-heading">
+              <span>🛒 오늘의 상품</span>
+              <span id="selectionCount">0개 선택</span>
+            </div>
+            <div id="productGrid" class="product-grid"></div>
+          </div>
+
+          <div class="machine-controls">
+            <div class="basket-title">🧺 선택한 물건</div>
+            <div id="basket" class="basket">물건을 눌러 주세요!</div>
+            <div class="control-buttons">
+              <button id="clearBtn" class="control-btn clear">
+                ↩️ 다시 고르기
+              </button>
+              <button id="sellBtn" class="control-btn sell">
+                🎁 판매하기!
+              </button>
+            </div>
+          </div>
+
+          <div class="delivery-slot">
+            <span>📦 상품 나오는 곳</span>
+            <div id="deliveryItem" class="delivery-item">✨</div>
+          </div>
+        </section>
+
+      </div>
+
+      <div id="feedback" class="feedback hidden">
+        <div class="feedback-card">
+          <div id="feedbackIcon" class="feedback-icon">🎉</div>
+          <h2 id="feedbackTitle">성공!</h2>
+          <p id="feedbackMessage"></p>
+          <button id="feedbackBtn" class="feedback-btn">
+            계속하기 ➡️
+          </button>
+        </div>
+      </div>
+
+    </section>
+  </main>
+</body>
+</html>
