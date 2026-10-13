@@ -1,0 +1,2050 @@
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --navy: #0b1730;
+  --text: #16233d;
+  --muted: #6e7b91;
+  --blue: #2167d5;
+  --green: #2eaa6b;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Apple SD Gothic Neo",
+    "Noto Sans KR",
+    "Malgun Gothic",
+    sans-serif;
+
+  background:
+    linear-gradient(
+      180deg,
+      #e7f2ff,
+      #f7faff
+    );
+
+  color: var(--text);
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+}
+
+.app {
+  width: min(1400px,100%);
+
+  margin: 0 auto;
+
+  padding:
+    7px
+    max(12px,env(safe-area-inset-right))
+    max(7px,env(safe-area-inset-bottom))
+    max(12px,env(safe-area-inset-left));
+}
+
+
+/* ======================================== */
+/* 상단 */
+/* ======================================== */
+
+.topbar {
+  min-height: 49px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 15px;
+}
+
+.title-area {
+  min-width: 0;
+}
+
+.eyebrow {
+  margin: 0 0 2px;
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  letter-spacing: .12em;
+
+  color: var(--blue);
+}
+
+h1 {
+  margin: 0;
+
+  font-size:
+    clamp(
+      20px,
+      2.4vw,
+      30px
+    );
+
+  line-height: 1.05;
+
+  color: var(--navy);
+}
+
+.scoreboard {
+  display: flex;
+
+  gap: 6px;
+
+  flex-shrink: 0;
+}
+
+.scorebox {
+  min-width: 62px;
+
+  padding: 4px 8px;
+
+  text-align: center;
+
+  border-radius: 12px;
+
+  background: white;
+
+  box-shadow:
+    0 5px 14px
+    rgba(34,70,120,.12);
+}
+
+.scorebox span {
+  display: block;
+
+  font-size: 9px;
+
+  color: var(--muted);
+}
+
+.scorebox strong {
+  font-size: 18px;
+}
+
+
+/* ======================================== */
+/* 장소 탭 */
+/* ======================================== */
+
+.place-tabs {
+  display: flex;
+
+  gap: 6px;
+
+  margin:
+    3px 0 5px;
+}
+
+.place-tab {
+  flex: 1;
+
+  min-height: 35px;
+
+  border:
+    2px solid
+    #dce5f2;
+
+  border-radius: 12px;
+
+  background: rgba(255,255,255,.85);
+
+  color: #526177;
+
+  font-weight: 900;
+
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+.place-tab.active {
+  background:
+    linear-gradient(
+      135deg,
+      #236fd7,
+      #57a0ff
+    );
+
+  color: white;
+
+  border-color: #236fd7;
+
+  box-shadow:
+    0 5px 13px
+    rgba(35,111,215,.22);
+}
+
+
+/* ======================================== */
+/* 공통 장면 */
+/* ======================================== */
+
+.scene {
+  position: relative;
+
+  height: 175px;
+
+  overflow: hidden;
+
+  border-radius: 19px;
+
+  border:
+    3px solid
+    rgba(255,255,255,.9);
+
+  box-shadow:
+    0 8px 22px
+    rgba(31,79,138,.15);
+}
+
+
+/* ======================================== */
+/* 기차역 */
+/* ======================================== */
+
+.rail-scene {
+  background:
+    linear-gradient(
+      #90cdf8 0 54%,
+      #9ac879 54% 100%
+    );
+}
+
+
+/* 구름 */
+
+.cloud {
+  position: absolute;
+
+  width: 65px;
+  height: 21px;
+
+  border-radius: 30px;
+
+  background:
+    rgba(255,255,255,.82);
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+
+  position: absolute;
+
+  background: inherit;
+
+  border-radius: 50%;
+}
+
+.cloud::before {
+  width: 27px;
+  height: 27px;
+
+  left: 12px;
+  top: -11px;
+}
+
+.cloud::after {
+  width: 33px;
+  height: 33px;
+
+  right: 7px;
+  top: -15px;
+}
+
+.cloud1 {
+  left: 11%;
+  top: 22px;
+}
+
+.cloud2 {
+  right: 11%;
+  top: 31px;
+}
+
+
+/* 역 */
+
+.station {
+  position: absolute;
+
+  width: 195px;
+
+  left: 50%;
+  top: 2px;
+
+  transform:
+    translateX(-50%);
+
+  z-index: 2;
+}
+
+.station-sign {
+  width: 140px;
+
+  margin: 0 auto;
+
+  padding: 3px 7px;
+
+  background: #114d91;
+
+  color: white;
+
+  text-align: center;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  border-radius:
+    7px 7px 0 0;
+}
+
+.station-building {
+  position: relative;
+
+  height: 50px;
+
+  border:
+    4px solid
+    #58718d;
+
+  border-radius:
+    10px 10px 3px 3px;
+
+  background: #f8f8f4;
+}
+
+.window-row {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 7px;
+
+  margin-top: 6px;
+}
+
+.window-row span {
+  width: 25px;
+  height: 14px;
+
+  border:
+    2px solid
+    #445d79;
+
+  background: #9cd5ef;
+
+  border-radius: 3px;
+}
+
+.station-door {
+  position: absolute;
+
+  width: 32px;
+  height: 20px;
+
+  left: 50%;
+  bottom: 0;
+
+  transform:
+    translateX(-50%);
+
+  background: #456684;
+
+  border-radius:
+    5px 5px 0 0;
+}
+
+
+/* 선로 */
+
+.track {
+  position: absolute;
+
+  left: 0;
+
+  width: 100%;
+  height: 42px;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 27px,
+      #806c4b 27px 35px,
+      transparent 35px 62px
+    );
+}
+
+.track::before,
+.track::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background: #5d6872;
+}
+
+.track::before {
+  top: 12px;
+}
+
+.track::after {
+  bottom: 11px;
+}
+
+.track-upper {
+  top: 82px;
+}
+
+.track-lower {
+  top: 127px;
+}
+
+
+/* 열차 */
+
+.train {
+  position: absolute;
+
+  top: 1px;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  gap: 2px;
+
+  z-index: 5;
+}
+
+.train-left {
+  left: 2%;
+}
+
+.train-right {
+  right: 2%;
+}
+
+.reverse-train {
+  flex-direction: row-reverse;
+}
+
+.engine,
+.car {
+  position: relative;
+
+  height: 32px;
+
+  border:
+    2px solid
+    #26374d;
+}
+
+.engine {
+  width: 70px;
+}
+
+.car {
+  width: 62px;
+
+  display: flex;
+
+  justify-content: space-evenly;
+
+  align-items: center;
+}
+
+.car span,
+.train-window {
+  background: #8fd1ec;
+
+  border:
+    1.5px solid
+    #26445d;
+}
+
+.car span {
+  width: 13px;
+  height: 8px;
+
+  border-radius: 2px;
+}
+
+.train-window {
+  position: absolute;
+
+  top: 5px;
+  left: 15px;
+
+  width: 23px;
+  height: 9px;
+
+  border-radius: 6px;
+}
+
+.reverse-train .train-window {
+  left: auto;
+  right: 15px;
+}
+
+.train-front-light {
+  position: absolute;
+
+  width: 6px;
+  height: 6px;
+
+  bottom: 5px;
+  left: 5px;
+
+  border-radius: 50%;
+
+  background: #ffe15d;
+
+  box-shadow:
+    0 0 7px
+    #ffe15d;
+}
+
+.reverse-train .train-front-light {
+  left: auto;
+  right: 5px;
+}
+
+.train-name {
+  position: absolute;
+
+  right: 3px;
+  bottom: 1px;
+
+  padding: 1px 3px;
+
+  font-size: 6px;
+
+  font-weight: 900;
+
+  background:
+    rgba(255,255,255,.92);
+
+  border-radius: 3px;
+
+  white-space: nowrap;
+}
+
+.reverse-train .train-name {
+  right: auto;
+  left: 3px;
+}
+
+
+/* 무궁화 */
+
+.mugunghwa .engine,
+.mugunghwa .car {
+  background:
+    linear-gradient(
+      #f4f4f4 0 54%,
+      #d93e46 54% 75%,
+      #245eaf 75%
+    );
+}
+
+.mugunghwa .engine {
+  border-radius:
+    22px 6px 4px 4px;
+}
+
+
+/* KTX */
+
+.ktx .engine,
+.ktx .car {
+  background:
+    linear-gradient(
+      #fafafa 0 55%,
+      #2769b6 55% 68%,
+      #e64848 68% 75%,
+      #ededed 75%
+    );
+}
+
+.ktx .engine {
+  border-radius:
+    6px 25px 4px 4px;
+}
+
+
+/* HEMU */
+
+.hemu .engine,
+.hemu .car {
+  background:
+    linear-gradient(
+      #f5f7fa 0 59%,
+      #3a8fd7 59% 77%,
+      #192a5e 77%
+    );
+}
+
+.hemu .engine {
+  border-radius:
+    24px 6px 4px 4px;
+}
+
+
+/* SRT */
+
+.srt .engine,
+.srt .car {
+  background:
+    linear-gradient(
+      #f3f2f5 0 55%,
+      #7a4b8f 55% 75%,
+      #442555 75%
+    );
+}
+
+.srt .engine {
+  border-radius:
+    6px 25px 4px 4px;
+}
+
+
+/* 움직임 */
+
+.train.engine-boost {
+  animation:
+    trainBoost .7s ease;
+}
+
+.train.reverse-train.engine-boost {
+  animation:
+    reverseTrainBoost .7s ease;
+}
+
+@keyframes trainBoost {
+
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(40px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+
+}
+
+@keyframes reverseTrainBoost {
+
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-40px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+
+}
+
+
+/* 신호 */
+
+.signal {
+  position: absolute;
+
+  top: 56px;
+
+  z-index: 6;
+}
+
+.signal-left {
+  left: 3%;
+}
+
+.signal-right {
+  right: 3%;
+}
+
+.signal-head {
+  display: grid;
+
+  gap: 2px;
+
+  padding: 4px;
+
+  background: #1f2937;
+
+  border:
+    2px solid
+    #0e141f;
+
+  border-radius: 7px;
+}
+
+.light {
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  opacity: .2;
+}
+
+.light.red {
+  background: #ff453a;
+}
+
+.light.yellow {
+  background: #ffd60a;
+}
+
+.light.green {
+  background: #30d158;
+}
+
+.light.active {
+  opacity: 1;
+}
+
+.control-strip {
+  position: absolute;
+
+  left: 50%;
+  top: 58px;
+
+  transform:
+    translateX(-50%);
+
+  display: flex;
+
+  gap: 6px;
+
+  padding: 4px 8px;
+
+  border-radius: 99px;
+
+  background:
+    rgba(11,23,48,.82);
+
+  color: white;
+
+  font-size: 9px;
+
+  font-weight: 850;
+
+  white-space: nowrap;
+
+  z-index: 7;
+}
+
+
+/* ======================================== */
+/* 학교 */
+/* ======================================== */
+
+.school-scene {
+  background:
+    linear-gradient(
+      #dff3ff 0 72%,
+      #b88b60 72% 100%
+    );
+}
+
+.school-wall {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.2),
+      transparent
+    );
+}
+
+.blackboard {
+  position: absolute;
+
+  left: 50%;
+  top: 12px;
+
+  transform:
+    translateX(-50%);
+
+  width: 42%;
+  height: 76px;
+
+  background: #275b4b;
+
+  border:
+    6px solid
+    #8d6746;
+
+  border-radius: 5px;
+
+  color: white;
+
+  text-align: center;
+
+  box-shadow:
+    inset 0 0 12px
+    rgba(0,0,0,.18);
+}
+
+.board-title {
+  margin-top: 7px;
+
+  font-size: 18px;
+
+  font-weight: 950;
+}
+
+.board-text {
+  margin-top: 5px;
+
+  font-size: 11px;
+
+  line-height: 1.4;
+
+  font-weight: 750;
+}
+
+.school-clock {
+  position: absolute;
+
+  right: 8%;
+
+  top: 15px;
+
+  width: 44px;
+  height: 44px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: white;
+
+  border:
+    4px solid
+    #66788d;
+
+  font-size: 22px;
+}
+
+.school-window {
+  position: absolute;
+
+  left: 5%;
+
+  top: 17px;
+
+  width: 110px;
+  height: 75px;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 3px;
+
+  padding: 4px;
+
+  background: white;
+
+  border:
+    5px solid
+    #54758d;
+}
+
+.school-window div {
+  background:
+    linear-gradient(
+      #7bc8ed,
+      #d8f3ff
+    );
+}
+
+.teacher-desk {
+  position: absolute;
+
+  right: 6%;
+
+  bottom: 20px;
+
+  width: 115px;
+  height: 45px;
+}
+
+.desk-top {
+  position: absolute;
+
+  top: 0;
+
+  width: 100%;
+  height: 13px;
+
+  border-radius: 5px;
+
+  background: #966f4c;
+}
+
+.desk-leg {
+  position: absolute;
+
+  top: 11px;
+
+  width: 9px;
+  height: 34px;
+
+  background: #735137;
+}
+
+.leg-one {
+  left: 12px;
+}
+
+.leg-two {
+  right: 12px;
+}
+
+.student-desk {
+  position: absolute;
+
+  bottom: 13px;
+
+  width: 70px;
+  height: 35px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 7px;
+
+  background: #d2a16d;
+
+  border-bottom:
+    8px solid
+    #805a37;
+
+  font-size: 23px;
+}
+
+.desk-a {
+  left: 27%;
+}
+
+.desk-b {
+  left: 45%;
+}
+
+.desk-c {
+  left: 63%;
+}
+
+.school-character {
+  position: absolute;
+
+  text-align: center;
+
+  font-size: 34px;
+
+  z-index: 5;
+}
+
+.school-character span {
+  display: block;
+
+  margin-top: -5px;
+
+  padding: 2px 6px;
+
+  border-radius: 99px;
+
+  background:
+    rgba(255,255,255,.9);
+
+  font-size: 9px;
+
+  font-weight: 900;
+}
+
+.school-ajun {
+  left: 17%;
+  bottom: 17px;
+}
+
+.school-friend {
+  left: 48%;
+  bottom: 20px;
+}
+
+.school-teacher {
+  right: 13%;
+  bottom: 43px;
+}
+
+
+/* ======================================== */
+/* 호텔 */
+/* ======================================== */
+
+.hotel-scene {
+  background:
+    linear-gradient(
+      #efe2ca 0 76%,
+      #8e694c 76% 100%
+    );
+}
+
+.hotel-wall {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,.07) 0 45px,
+      rgba(121,82,46,.04) 45px 90px
+    );
+}
+
+.hotel-logo {
+  position: absolute;
+
+  left: 50%;
+  top: 11px;
+
+  transform:
+    translateX(-50%);
+
+  padding: 6px 16px;
+
+  border-radius: 99px;
+
+  background: #4d3827;
+
+  color: #ffe3a2;
+
+  font-size: 12px;
+
+  font-weight: 950;
+
+  letter-spacing: .05em;
+}
+
+.hotel-elevator {
+  position: absolute;
+
+  left: 7%;
+  bottom: 0;
+
+  width: 105px;
+  height: 118px;
+
+  border:
+    7px solid
+    #7d6c5c;
+
+  background: #d4c7ba;
+}
+
+.elevator-number {
+  position: absolute;
+
+  left: 50%;
+  top: -26px;
+
+  transform:
+    translateX(-50%);
+
+  width: 28px;
+
+  padding: 3px;
+
+  border-radius: 5px;
+
+  background: #292929;
+
+  color: #f0c96d;
+
+  text-align: center;
+
+  font-weight: 900;
+}
+
+.elevator-door {
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  width: 50%;
+
+  background:
+    linear-gradient(
+      90deg,
+      #8f969b,
+      #c7cccf
+    );
+}
+
+.left-door {
+  left: 0;
+
+  border-right:
+    2px solid
+    #5a6064;
+}
+
+.right-door {
+  right: 0;
+}
+
+.hotel-front {
+  position: absolute;
+
+  left: 50%;
+  bottom: 12px;
+
+  transform:
+    translateX(-50%);
+
+  width: 290px;
+}
+
+.front-sign {
+  width: 120px;
+
+  margin: 0 auto 2px;
+
+  padding: 3px;
+
+  border-radius:
+    5px 5px 0 0;
+
+  background: #644731;
+
+  color: white;
+
+  text-align: center;
+
+  font-size: 9px;
+
+  font-weight: 900;
+}
+
+.front-counter {
+  height: 52px;
+
+  border-radius:
+    8px 8px 3px 3px;
+
+  background:
+    linear-gradient(
+      #9f7652,
+      #62442f
+    );
+
+  border-top:
+    6px solid
+    #c99c6b;
+}
+
+.hotel-bell {
+  position: absolute;
+
+  left: 50%;
+
+  bottom: 61px;
+
+  transform:
+    translateX(-50%);
+
+  font-size: 27px;
+
+  z-index: 5;
+}
+
+.hotel-sofa {
+  position: absolute;
+
+  right: 7%;
+
+  bottom: 12px;
+
+  font-size: 67px;
+}
+
+.hotel-plant {
+  position: absolute;
+
+  right: 3%;
+
+  top: 31px;
+
+  font-size: 40px;
+}
+
+.hotel-character {
+  position: absolute;
+
+  text-align: center;
+
+  font-size: 35px;
+
+  z-index: 7;
+}
+
+.hotel-character span {
+  display: block;
+
+  margin-top: -6px;
+
+  padding: 2px 6px;
+
+  border-radius: 99px;
+
+  background:
+    rgba(255,255,255,.92);
+
+  font-size: 9px;
+
+  font-weight: 900;
+}
+
+.hotel-manager {
+  left: 42%;
+  bottom: 52px;
+}
+
+.hotel-guest {
+  right: 25%;
+  bottom: 33px;
+}
+
+
+/* 역할 배너 */
+
+.scene-role-label {
+  position: absolute;
+
+  left: 50%;
+  top: 97px;
+
+  transform:
+    translateX(-50%);
+
+  padding: 4px 9px;
+
+  border-radius: 99px;
+
+  background:
+    rgba(18,44,77,.84);
+
+  color: white;
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  white-space: nowrap;
+}
+
+.hotel-role {
+  top: 48px;
+
+  background:
+    rgba(92,58,30,.85);
+}
+
+
+/* ======================================== */
+/* 게임 영역 */
+/* ======================================== */
+
+.game-panel {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0,2.4fr)
+    minmax(220px,.6fr);
+
+  gap: 8px;
+
+  margin-top: 5px;
+}
+
+.mission-card,
+.helper-card {
+  background:
+    rgba(255,255,255,.97);
+
+  border:
+    1px solid
+    #dbe6f5;
+
+  box-shadow:
+    0 6px 18px
+    rgba(35,73,126,.08);
+}
+
+.mission-card {
+  padding: 8px 11px;
+
+  border-radius: 16px;
+}
+
+.helper-card {
+  padding: 10px;
+
+  border-radius: 16px;
+}
+
+
+/* 임무 상단 */
+
+.mission-top {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.mission-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+}
+
+.mission-type {
+  min-height: 23px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 3px 8px;
+
+  border-radius: 99px;
+
+  background: #eaf3ff;
+
+  color: #1c5fb3;
+
+  font-size: 10px;
+
+  font-weight: 900;
+}
+
+.role-badge {
+  padding: 3px 8px;
+
+  border-radius: 99px;
+
+  background: #eaf9ef;
+
+  color: #197347;
+
+  font-size: 10px;
+
+  font-weight: 900;
+}
+
+.small-btn {
+  padding: 4px 7px;
+
+  border: 0;
+
+  border-radius: 8px;
+
+  background: #eef2f7;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+
+/* 등장인물 */
+
+.character-bar {
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  margin-top: 3px;
+}
+
+.character-label {
+  font-size: 9px;
+
+  color: #6c778a;
+
+  font-weight: 800;
+
+  flex-shrink: 0;
+}
+
+.character-area {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 3px;
+}
+
+.character-chip {
+  padding: 2px 6px;
+
+  border-radius: 99px;
+
+  background: #fff0d9;
+
+  color: #88550d;
+
+  font-size: 10px;
+
+  font-weight: 900;
+}
+
+
+/* 제목 */
+
+.mission-title-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  margin-top: 2px;
+}
+
+.mission-icon {
+  font-size: 20px;
+}
+
+.mission-card h2 {
+  margin: 0;
+
+  font-size:
+    clamp(
+      18px,
+      1.8vw,
+      24px
+    );
+
+  line-height: 1.1;
+}
+
+#missionText {
+  margin:
+    2px 0 5px;
+
+  font-size:
+    clamp(
+      13px,
+      1.35vw,
+      18px
+    );
+
+  line-height: 1.25;
+
+  font-weight: 800;
+}
+
+
+/* 선택지 */
+
+.choices {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2,minmax(0,1fr));
+
+  gap: 5px;
+}
+
+.choice-btn {
+  min-height: 38px;
+
+  padding: 5px 7px;
+
+  border:
+    2px solid
+    #dce5f2;
+
+  border-radius: 10px;
+
+  background: white;
+
+  color: var(--text);
+
+  font-size:
+    clamp(
+      11px,
+      1.05vw,
+      14px
+    );
+
+  line-height: 1.2;
+
+  font-weight: 850;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.choice-btn.correct {
+  border-color: #2bb673;
+
+  background: #ecfbf3;
+}
+
+.choice-btn.wrong {
+  border-color: #df5a5a;
+
+  background: #fff1f1;
+}
+
+
+/* 피드백 */
+
+.feedback {
+  margin-top: 4px;
+
+  padding: 5px 7px;
+
+  border-radius: 8px;
+
+  font-size: 11px;
+
+  line-height: 1.25;
+
+  font-weight: 850;
+}
+
+.feedback.good {
+  background: #eafaf1;
+
+  color: #167146;
+}
+
+.feedback.try {
+  background: #fff4df;
+
+  color: #99610c;
+}
+
+
+/* 말하기 */
+
+.speech-box {
+  margin-top: 4px;
+
+  padding: 5px 7px;
+
+  border:
+    2px dashed
+    #7fa9df;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #eef6ff,
+      #f7f1ff
+    );
+}
+
+.speech-label {
+  margin: 0 0 2px;
+
+  font-size: 10px;
+
+  font-weight: 900;
+
+  color: #2d5896;
+}
+
+.speech-prompt {
+  margin: 0 0 4px;
+
+  font-size: 11px;
+
+  line-height: 1.25;
+
+  font-weight: 850;
+}
+
+.speak-done-btn {
+  width: 100%;
+
+  min-height: 28px;
+
+  border: 0;
+
+  border-radius: 8px;
+
+  background: #7057c9;
+
+  color: white;
+
+  font-size: 11px;
+
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+
+/* 버튼 */
+
+.button-row {
+  display: flex;
+
+  justify-content: center;
+
+  margin-top: 4px;
+}
+
+.primary-btn {
+  min-width: 165px;
+
+  min-height: 33px;
+
+  border: 0;
+
+  border-radius: 9px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #1f6edb,
+      #3f8df1
+    );
+
+  color: white;
+
+  font-size: 12px;
+
+  font-weight: 950;
+
+  cursor: pointer;
+}
+
+
+/* 도움 */
+
+.helper-card h3 {
+  margin: 0 0 6px;
+
+  font-size: 15px;
+}
+
+.helper-grid {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 4px;
+}
+
+.helper-grid div {
+  min-height: 42px;
+
+  padding: 5px;
+
+  border-radius: 8px;
+
+  background: #f6f8fb;
+}
+
+.helper-grid strong {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 17px;
+  height: 17px;
+
+  border-radius: 50%;
+
+  background: #1f6edb;
+
+  color: white;
+
+  font-size: 9px;
+}
+
+.helper-grid span {
+  display: block;
+
+  margin-top: 2px;
+
+  font-size: 9px;
+
+  font-weight: 850;
+}
+
+.badge-list {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 3px;
+
+  margin-top: 6px;
+}
+
+.badge-list span {
+  padding: 3px 5px;
+
+  border-radius: 99px;
+
+  background: #edf4ff;
+
+  color: #275b9a;
+
+  font-size: 8px;
+
+  font-weight: 850;
+}
+
+.tip {
+  margin-top: 6px;
+
+  padding: 5px;
+
+  border-radius: 7px;
+
+  background: #fff7de;
+
+  color: #765612;
+
+  font-size: 9px;
+
+  line-height: 1.3;
+
+  font-weight: 750;
+}
+
+
+/* ======================================== */
+/* 성공 */
+/* ======================================== */
+
+.celebration {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 50;
+
+  display: grid;
+
+  place-items: center;
+
+  background:
+    rgba(5,15,31,.28);
+
+  backdrop-filter: blur(4px);
+}
+
+.celebration-card {
+  width:
+    min(320px,80vw);
+
+  padding: 17px;
+
+  border-radius: 19px;
+
+  background: white;
+
+  text-align: center;
+
+  box-shadow:
+    0 12px 35px
+    rgba(0,0,0,.18);
+}
+
+.big-emoji {
+  font-size: 43px;
+}
+
+.celebration-card h2 {
+  margin: 3px;
+
+  font-size: 22px;
+}
+
+.celebration-card p {
+  margin: 0;
+
+  font-size: 12px;
+
+  font-weight: 750;
+}
+
+
+.hidden {
+  display: none !important;
+}
+
+
+/* ======================================== */
+/* 아이패드 가로 화면 */
+/* ======================================== */
+
+@media
+(max-height:850px)
+and
+(orientation:landscape) {
+
+  .app {
+    padding-top: 3px;
+  }
+
+  .topbar {
+    min-height: 36px;
+  }
+
+  .eyebrow {
+    display: none;
+  }
+
+  h1 {
+    font-size: 19px;
+  }
+
+  .scorebox {
+    min-width: 55px;
+
+    padding: 2px 6px;
+  }
+
+  .scorebox strong {
+    font-size: 16px;
+  }
+
+  .place-tabs {
+    margin:
+      2px 0 3px;
+  }
+
+  .place-tab {
+    min-height: 29px;
+
+    font-size: 11px;
+  }
+
+  .scene {
+    height: 142px;
+  }
+
+  .station {
+    transform:
+      translateX(-50%)
+      scale(.82);
+
+    transform-origin:
+      top center;
+  }
+
+  .track-upper {
+    top: 66px;
+  }
+
+  .track-lower {
+    top: 103px;
+  }
+
+  .signal {
+    top: 44px;
+  }
+
+  .control-strip {
+    top: 45px;
+  }
+
+  .engine,
+  .car {
+    height: 27px;
+  }
+
+  .engine {
+    width: 60px;
+  }
+
+  .car {
+    width: 52px;
+  }
+
+  .blackboard {
+    top: 7px;
+
+    height: 61px;
+  }
+
+  .board-title {
+    font-size: 14px;
+  }
+
+  .board-text {
+    font-size: 9px;
+  }
+
+  .school-character {
+    font-size: 27px;
+  }
+
+  .student-desk {
+    bottom: 7px;
+
+    height: 27px;
+
+    font-size: 17px;
+  }
+
+  .teacher-desk {
+    bottom: 8px;
+  }
+
+  .scene-role-label {
+    top: 73px;
+  }
+
+  .hotel-logo {
+    top: 5px;
+
+    font-size: 9px;
+  }
+
+  .hotel-elevator {
+    height: 93px;
+  }
+
+  .hotel-front {
+    bottom: 5px;
+  }
+
+  .front-counter {
+    height: 42px;
+  }
+
+  .hotel-manager {
+    bottom: 42px;
+  }
+
+  .hotel-guest {
+    bottom: 24px;
+  }
+
+  .hotel-role {
+    top: 35px;
+  }
+
+  .game-panel {
+    margin-top: 3px;
+  }
+
+  .mission-card {
+    padding: 5px 8px;
+  }
+
+  .helper-card {
+    padding: 7px;
+  }
+
+  #missionText {
+    font-size: 12px;
+  }
+
+  .choice-btn {
+    min-height: 32px;
+
+    font-size: 10px;
+
+    padding: 3px 5px;
+  }
+
+  .mission-card h2 {
+    font-size: 16px;
+  }
+
+  .mission-icon {
+    font-size: 16px;
+  }
+
+}
+
+
+/* ======================================== */
+/* 세로 태블릿 */
+/* ======================================== */
+
+@media
+(max-width:850px)
+and
+(orientation:portrait) {
+
+  .game-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .helper-card {
+    display: none;
+  }
+
+}
